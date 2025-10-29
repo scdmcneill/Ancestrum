@@ -2,8 +2,6 @@
 
 ## Author
 Scott McNeill
-Computer Science Major, University of Hoouston-Downtown
-Veteran U.S. Army/Texas National Guard
 
 ## Overview
 **Ancestrum** is a C++ application designed to model, store, and display complex family relationships in a structured and dynamic way.
@@ -77,19 +75,19 @@ Planned GUI Framework Options:
 - Full GUI tree with color-coded relationship types
 
 ## Technical Details
-Component                    Description
-Language                     C++20
-Libraries                    <iostream>, <vector>, <unordered_map>, <string>, <fstream>
-Paradigm                     Object-Oriented Programming (OOP)
-Data Structure               Directed Graph (nodes = relatives, edges = relationships)
-Planned GUI Library          exWidgets/ Qt
-Compiler                     g++/MSVC
+Component                    Description  
+Language                     C++20  
+Libraries                    <iostream>, <vector>, <unordered_map>, <string>, <fstream>  
+Paradigm                     Object-Oriented Programming (OOP)  
+Data Structure               Directed Graph (nodes = relatives, edges = relationships)  
+Planned GUI Library          exWidgets/ Qt  
+Compiler                     g++/MSVC  
 
 ## About the Developer
 Scott McNeill
 - U.S. Army Veteran (35G - Geospatial Intelligence Imagery Analyst, 12 Years)
 - Computer Science Major @ University of Houston-Downton
 - Focus Areas: C++ development, AI, data visualization, and geospatial applicaitons/intelligence collection.
-My goal with this project is to provide an easily accessible application for anyone to use to learn more about their familiy history
+My goal with this project is to provide an easily accessible application for anyone to use to learn more about their familiy history  
 as well as discover their past along the way. I have always had a passion for learning about my ancestry and many of those in my family
 enjoy it as well. I envisioned creating an application that is inuitive enough so that older family members can enjoy building the family tree.
