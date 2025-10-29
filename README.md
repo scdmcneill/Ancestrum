@@ -77,7 +77,7 @@ Planned GUI Framework Options:
 ## Technical Details
 Component  >  Description  
 Language  >  C++20  
-Libraries  >  <iostream>, <vector>, <unordered_map>, <string>, <fstream>  
+Libraries > <iostream>, <vector>, <unordered_map>, <string>, <fstream>  
 Paradigm  >  Object-Oriented Programming (OOP)  
 Data Structure  >  Directed Graph (nodes = relatives, edges = relationships)  
 Planned GUI Library  >  exWidgets/ Qt  
