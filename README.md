@@ -75,13 +75,13 @@ Planned GUI Framework Options:
 - Full GUI tree with color-coded relationship types
 
 ## Technical Details
-Component                    Description  
-Language                     C++20  
-Libraries                    <iostream>, <vector>, <unordered_map>, <string>, <fstream>  
-Paradigm                     Object-Oriented Programming (OOP)  
-Data Structure               Directed Graph (nodes = relatives, edges = relationships)  
-Planned GUI Library          exWidgets/ Qt  
-Compiler                     g++/MSVC  
+Component  >  Description  
+Language  >  C++20  
+Libraries  >  <iostream>, <vector>, <unordered_map>, <string>, <fstream>  
+Paradigm  >  Object-Oriented Programming (OOP)  
+Data Structure  >  Directed Graph (nodes = relatives, edges = relationships)  
+Planned GUI Library  >  exWidgets/ Qt  
+Compiler  >  g++/MSVC  
 
 ## About the Developer
 Scott McNeill
