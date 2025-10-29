@@ -10,6 +10,8 @@ using std::cin;
 class Relative {  
 public:  
    // Default Constructor  
+   Relative() : firstName("John"), lastName("Doe"), gender('M') {}
+    
    Relative(string fName, string lName, char gender) : firstName(fName), lastName(lName), gender(gender), isLiving(true) {}  
 
    // Partial Constructor (with middle name)  
@@ -52,7 +54,7 @@ public:
    void setEducation(const string& edu) { education = edu; }  
    void setBiography(const string& bio) { biography = bio; }  
 
-   void displayRelative() {
+   void const displayRelative() {
        cout << "----- Relative Information -----\n";
        cout << "First Name: " << firstName << "\n";
        cout << "Middle Name: " << middleName << "\n";
@@ -88,5 +90,6 @@ private:
    string occupation;  
    string education;  
    string biography;  
+   // still more facts about relative to add in future.
 };
 

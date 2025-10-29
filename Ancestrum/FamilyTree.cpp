@@ -3,6 +3,14 @@
 
 #include <unordered_map>
 
+// Build Notes to Self:
+// - Need to come up with way to sort grandparents by maternal and paternal.
+//		- how would this be displayed?
+//		- how deep by default are grandparents displayed
+//		- possible GUI implementation would be asking user to input desired tree depth?
+
+// - Need to add logic so that when a father is added to an individual, all appropriate relationships are built afterwards.
+
 using std::string;
 using std::vector;
 using std::pair;
@@ -24,6 +32,9 @@ struct Relationships {
 
 class FamilyTree {
 public:
+	//Constructors
+	FamilyTree() {} // default
+	
 	string makeID(const Relative& relative) {
 		return relative.getFirstName() + " " + relative.getMiddleName() + " " + relative.getLastName()
 			+ " " + relative.getBirthDate();
@@ -34,6 +45,24 @@ public:
 			familyGraph.emplace(id, Relationships{});
 	}
 
+	// Getters
+	Relative* getFather(const Relative& relative) {
+		string childID = makeID(relative);
+		return familyGraph[childID].father;
+	}
+	Relative* getMother(const Relative& relative) {
+		string childID = makeID(relative);
+		return familyGraph[childID].mother;
+	}
+	Relative* getSiblings(const Relative& relative) {
+		string siblingID = makeID(relative);
+		for (auto sibling : familyGraph[siblingID].siblings) {
+			return sibling;
+		}
+	}
+	
+	
+	// Mutators
 	void setFather(const Relative& child, const Relative& father) {
 		string childID = makeID(child);
 		string fatherID = makeID(father);
@@ -106,7 +135,85 @@ public:
 		familyGraph[grandparentID].grandchildren.push_back(&family[grandchildID]);
 	}
 	
+	// need to add methods for diplaying familyGraph
+	void displayFamilyGraph(const Relative& relative) {
+		string relativeID = makeID(relative);
+		auto it = familyGraph.find(relativeID);
+		if (it == familyGraph.end()) {
+			cout << "No relationship data for this person.\n";
+			return;
+		}
 
+		const Relationships& rel = it->second;
+
+		cout << "----- Family Tree for "
+			<< relative.getFirstName() << " " << relative.getLastName() << " -----\n\n";
+
+		// Parents
+		cout << "Parents:\n";
+		if (rel.father) {
+			cout << " - Father: " << rel.father->getFirstName() << " " << rel.father->getLastName() << '\n';
+		}
+		if (rel.mother) {
+			cout << " - Mother: " << rel.mother->getFirstName() << " " << rel.mother->getLastName() << '\n';
+		}
+		if (!rel.father && !rel.mother) {
+			cout << " (No Parent Record Found)\n";
+		}
+
+		// Siblings
+		cout << "\nSiblings:\n";
+		if (rel.siblings.empty()) {
+			cout << " (No Sibling Record Found)\n";
+		}
+		else {
+			for (auto sib : rel.siblings) {
+				cout << " - " << sib->getFirstName()
+					<< " " << sib->getLastName()
+					<< " (" << sib->getGender() << ")\n";
+			}
+		}
+
+		// Spouse
+		cout << "\nSpouse:\n";
+		if (!rel.spouse) {
+			cout << " (No Spouse Record Found)\n";
+		}
+		else {
+			cout << rel.spouse->getFirstName() << " " << rel.spouse->getFirstName() << '\n';
+		}
+
+		//Children
+		cout << "\nChildren:\n";
+		if (rel.children.empty()) {
+			cout << " (No Children Record Found)\n";
+		}
+		else {
+			for (auto kid : rel.children) {
+				cout << " - " << kid->getFirstName()
+					<< " " << kid->getLastName()
+					<< " (" << kid->getGender() << ")\n";
+			}
+		}
+
+		// Grandparents
+		cout << "\nGrandparents: ";
+		if (rel.grandparents.empty()) {
+			cout << " (No Grandparent Record Found)\n";
+		}
+		else {
+			for (auto gp : rel.grandparents) {
+				string generation;
+				for (int i = 1; i < gp.second; i++) {
+					generation.append("Great ");
+				}
+				cout << " - " << gp.first->getFirstName()
+					<< " " << gp.first->getLastName()
+					<< "\n (" << generation << "Grandparent)\n"
+					<< " - Gender: " << gp.first->getGender();
+			}
+		}
+	}
 private:
 	// family network as a graph
 	std::unordered_map<string, Relative> family;
